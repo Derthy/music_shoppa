@@ -1,7 +1,5 @@
 package com.dmcs.dszubert
 
-
-
 import static org.springframework.http.HttpStatus.*
 
 import org.example.SecUser;
@@ -12,26 +10,20 @@ import grails.plugin.springsecurity.SpringSecurityUtils;
 import grails.transaction.Transactional
 import grails.web.RequestParameter
 
-@Transactional(readOnly = true)
+@Transactional(readOnly = false)
 class ProductsController {
 
-	SpringSecurityService springSecurityService
+    ProductsService productsService
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond Products.list(params), model:[productsInstanceCount: Products.count()]
     }
-	def authenticateService
-	def buy(){
-		
-		def product = Products.get(params.id)
-		UserDetails currentUser = springSecurityService.principal
-		def username = currentUser.getUsername()
-		def secUser = SecUser.findByUsername(username)
-        product.addToMembers(secUser).save()
+    def buy(){
+        productsService.saveProduct((params.id as String));
         redirect (action:'index')
-	}
+    }
 
     def show(Products productsInstance) {
         respond productsInstance
@@ -98,6 +90,8 @@ class ProductsController {
             notFound()
             return
         }
+
+        productsService.removeProductRelation(productsInstance)
 
         productsInstance.delete flush:true
 

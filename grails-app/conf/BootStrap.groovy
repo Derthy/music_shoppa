@@ -17,7 +17,7 @@ class BootStrap {
 		}
 		if(SecUserSecRole.count() == 0) {
 			new SecUserSecRole(SecUser.first(),SecRole.first()).save()
-			new SecUserSecRole(SecUser.findByUsername('user'),SecRole.findByAuthority('ROLE_USER'))
+			new SecUserSecRole(SecUser.findByUsername('user'),SecRole.findByAuthority('ROLE_USER')).save()
 		}
     }
     def destroy = {

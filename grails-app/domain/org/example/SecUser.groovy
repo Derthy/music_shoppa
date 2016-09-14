@@ -23,7 +23,7 @@ class SecUser implements Serializable {
 	boolean passwordExpired
 	
 	static hasMany = [products: Products]
-	static mappedBy = [products: "members"]
+	//static mappedBy = [buyers: Products]
 
 	SecUser(String username, String password) {
 		this()
@@ -54,6 +54,7 @@ class SecUser implements Serializable {
 	static constraints = {
 		username blank: false, unique: true
 		password blank: false
+		products cascade: 'all-delete-orphan'
 	}
 
 	static mapping = {
