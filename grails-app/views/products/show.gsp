@@ -37,37 +37,38 @@
 					<span id="description-label" class="property-label"><g:message code="products.description.label" default="Description" /></span>
 					
 						<span class="property-value" aria-labelledby="description-label"><g:fieldValue bean="${productsInstance}" field="description"/></span>
-					
+
 				</li>
 				</g:if>
-			
+
+
 				<g:if test="${productsInstance?.buyers}">
 				<li class="fieldcontain">
 					<span id="members-label" class="property-label"><g:message code="products.members.label" default="Members" /></span>
-					
+
 						<g:each in="${productsInstance.buyers}" var="m">
 						<span class="property-value" aria-labelledby="members-label"><g:link controller="secUser" action="show" id="${m.id}">${m?.encodeAsHTML()}</g:link></span>
 						</g:each>
-					
+
 				</li>
 				</g:if>
-			
+
 				<g:if test="${productsInstance?.picture}">
 				<li class="fieldcontain">
 					<span id="picture-label" class="property-label"><g:message code="products.picture.label" default="Picture" /></span>
-					
+
 				</li>
 				</g:if>
-			
+
 				<g:if test="${productsInstance?.price}">
 				<li class="fieldcontain">
 					<span id="price-label" class="property-label"><g:message code="products.price.label" default="Price" /></span>
-					
+
 						<span class="property-value" aria-labelledby="price-label"><g:fieldValue bean="${productsInstance}" field="price"/></span>
-					
+
 				</li>
 				</g:if>
-			
+
 			</ol>
 			<g:form url="[resource:productsInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">

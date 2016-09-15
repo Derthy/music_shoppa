@@ -32,15 +32,6 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${secUserInstance?.password}">
-				<li class="fieldcontain">
-					<span id="password-label" class="property-label"><g:message code="secUser.password.label" default="Password" /></span>
-					
-						<span class="property-value" aria-labelledby="password-label"><g:fieldValue bean="${secUserInstance}" field="password"/></span>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${secUserInstance?.accountExpired}">
 				<li class="fieldcontain">
 					<span id="accountExpired-label" class="property-label"><g:message code="secUser.accountExpired.label" default="Account Expired" /></span>
@@ -84,9 +75,7 @@
 						<g:each in="${secUserInstance.products}" var="p">
 						<span class="property-value" aria-labelledby="products-label"><g:link controller="products" action="show" id="${p.id}">${p?.encodeAsHTML()}</g:link></span>
 						</g:each>
-					
-				</li>
-				</g:if>
+
 			
 			</ol>
 			<g:form url="[resource:secUserInstance, action:'delete']" method="DELETE">

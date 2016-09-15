@@ -22,7 +22,8 @@ class SecUser implements Serializable {
 	boolean accountLocked
 	boolean passwordExpired
 	
-	static hasMany = [products: Products]
+	static hasMany = [products: Products,roles:SecRole]
+
 	//static mappedBy = [buyers: Products]
 
 	SecUser(String username, String password) {

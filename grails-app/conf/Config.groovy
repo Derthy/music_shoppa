@@ -114,6 +114,7 @@ log4j.main = {
            'org.springframework',
            'org.hibernate',
            'net.sf.ehcache.hibernate'
+     info  'com.dmcs.dszubert'
 }
 
 
@@ -132,6 +133,7 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/**/favicon.ico':  ['permitAll'],
 	'/**/products/**':		['permitAll'],
 	'/**/products/create':		['ROLE_ADMIN'],
+    '/**/products/cart/**':		['ROLE_USER'],
 	'/**/SecUser/**':		['ROLE_ADMIN'],
 	//'/**/addProduct':		['ROLE_ADMIN']
 ]

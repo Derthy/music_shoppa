@@ -30,9 +30,14 @@
                 <ul class="nav navbar-nav" style="float: right">
                 	<sec:ifAnyGranted roles="ROLE_USER">
                 		<li>
-                			<a href="cart"><g:message code="label.cart"></g:message></a>
+                			<a href="/music_shoppa/products/cart/"><g:message code="label.cart"></g:message></a>
                 		</li>
                 	</sec:ifAnyGranted>
+					<sec:ifAnyGranted roles="ROLE_ADMIN">
+						<li>
+							<a href="/music_shoppa/SecUser/"><g:message code="label.user"></g:message></a>
+						</li>
+					</sec:ifAnyGranted>
                 	<sec:ifNotLoggedIn>
 	                	<li>
 	                        <a href="/music_shoppa/login/"><g:message code="label.login"></g:message></a>

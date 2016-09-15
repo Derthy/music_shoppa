@@ -1,5 +1,8 @@
 package com.dmcs.dszubert
 
+import groovy.util.logging.Slf4j
+import org.springframework.security.access.annotation.Secured
+
 import static org.springframework.http.HttpStatus.*
 
 import org.example.SecUser;
@@ -11,6 +14,7 @@ import grails.transaction.Transactional
 import grails.web.RequestParameter
 
 @Transactional(readOnly = false)
+@Slf4j
 class ProductsController {
 
     ProductsService productsService
@@ -20,6 +24,7 @@ class ProductsController {
         params.max = Math.min(max ?: 10, 100)
         respond Products.list(params), model:[productsInstanceCount: Products.count()]
     }
+    @Secured(value=["hasRole('ROLE_USER')"])
     def buy(){
         productsService.saveProduct((params.id as String));
         redirect (action:'index')
@@ -27,6 +32,16 @@ class ProductsController {
 
     def show(Products productsInstance) {
         respond productsInstance
+    }
+
+    def removeFromCart(){
+        productsService.removeProductFromCart((params.id as String))
+        redirect (action:'cart')
+    }
+
+    def cart(){
+        log.info("Entering Cart" )
+        respond Products.list(params), model:[products: productsService.getUserCart()]
     }
 
     def create() {

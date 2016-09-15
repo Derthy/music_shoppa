@@ -10,6 +10,7 @@ class SecRole implements Serializable {
 	private static final long serialVersionUID = 1
 
 	String authority
+	static belongsTo = SecUser
 
 	SecRole(String authority) {
 		this()

@@ -11,6 +11,7 @@ import grails.transaction.Transactional
 @Transactional(readOnly = true)
 class SecUserController {
 
+    SecUserService secUserService
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
@@ -84,6 +85,8 @@ class SecUserController {
             return
         }
 
+        secUserService.removeUserRelation(secUserInstance)
+        SecRole.deleteAll(secUserInstance.getAuthorities())
         secUserInstance.delete flush:true
 
         request.withFormat {
