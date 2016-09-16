@@ -20,4 +20,7 @@ class Products{
 		pictureType(nullable:true)
         buyers cascade : 'all-delete-orphan'
 	}
+    static mapping = {
+        sort: "name"
+    }
 }

@@ -3,9 +3,6 @@ package org.example
 
 
 import static org.springframework.http.HttpStatus.*
-
-import org.example.SecUser;
-
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
@@ -84,9 +81,8 @@ class SecUserController {
             notFound()
             return
         }
-
         secUserService.removeUserRelation(secUserInstance)
-        SecRole.deleteAll(secUserInstance.getAuthorities())
+        secUserService.removeUserRoleRelation(secUserInstance)
         secUserInstance.delete flush:true
 
         request.withFormat {

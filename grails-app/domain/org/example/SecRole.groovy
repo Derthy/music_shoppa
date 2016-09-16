@@ -11,6 +11,7 @@ class SecRole implements Serializable {
 
 	String authority
 	static belongsTo = SecUser
+	static hasMany = [users: SecUser]
 
 	SecRole(String authority) {
 		this()

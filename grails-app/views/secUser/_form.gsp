@@ -16,7 +16,16 @@
 		<g:message code="secUser.password.label" default="Password" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:passwordField type="password" name="password" required=""/>
+	<g:passwordField name="password" required="" value="${secUserInstance?.password}"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: secUserInstance, field: 'products', 'error')} ">
+	<label for="products">
+		<g:message code="secUser.products.label" default="Products" />
+		
+	</label>
+	<g:select name="products" from="${com.dmcs.dszubert.Products.list()}" multiple="multiple" optionKey="id" size="5" value="${secUserInstance?.products*.id}" class="many-to-many"/>
 
 </div>
 
@@ -50,26 +59,18 @@
 <div class="fieldcontain ${hasErrors(bean: secUserInstance, field: 'passwordExpired', 'error')} ">
 	<label for="passwordExpired">
 		<g:message code="secUser.passwordExpired.label" default="Password Expired" />
+		
 	</label>
 	<g:checkBox name="passwordExpired" value="${secUserInstance?.passwordExpired}" />
 
 </div>
 
-<sec:ifAnyGranted roles="ROLE_ADMIN">
-<div class="fieldcontain ${hasErrors(bean: secUserInstance, field: 'products', 'error')} ">
-	<label for="products">
-		<g:message code="secUser.products.label" default="Products" />
+<div class="fieldcontain ${hasErrors(bean: secUserInstance, field: 'roles', 'error')} ">
+	<label for="roles">
+		<g:message code="secUser.roles.label" default="Roles" />
 		
 	</label>
-	<g:select name="products" from="${com.dmcs.dszubert.Products.list()}" multiple="multiple" optionKey="id" size="5" value="${secUserInstance?.products*.id}" class="many-to-many"/>
+	<g:select name="roles" from="${org.example.SecRole.list()}" multiple="multiple" optionKey="id" size="5" value="${secUserInstance?.roles*.id}" class="many-to-many"/>
+
 </div>
-
-    <div class="fieldcontain ${hasErrors(bean: secUserInstance, field: 'roles', 'error')} ">
-    <label for="roles">
-        <g:message code="secUser.products.label" default="Roles" />
-
-    </label>
-        <g:select name="roles" from="${org.example.SecRole.list()}" multiple="multiple" optionKey="id" size="5" value="${secUserInstance?.roles*.id}" class="many-to-many"/>
-    </div>
-</sec:ifAnyGranted>
 

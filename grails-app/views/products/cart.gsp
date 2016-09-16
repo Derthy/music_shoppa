@@ -15,18 +15,34 @@
 <body>
 <g:each in="${products}" status="i" var="product">
     <table>
-    <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 
-        <td><g:link action="cart" id="${product.id}">${fieldValue(bean: product, field: "name")}</g:link></td>
+        <thead>
+			<tr>
 
-        <td>${fieldValue(bean: product, field: "description")}</td>
+            <g:sortableColumn property="name" title="${message(code: 'products.name.label', default: 'Name')}" />
 
-        <td>${fieldValue(bean: product, field: "picture")}</td>
+            <g:sortableColumn property="description" title="${message(code: 'products.description.label', default: 'Description')}" />
 
-        <td>${fieldValue(bean: product, field: "price")}</td>
-        <td><a class="btn btn-primary" href="/music_shoppa/products/removeFromCart/${fieldValue(bean: product, field: "id")}"><g:message code="label.remove"/></a>
+            <g:sortableColumn property="picture" title="${message(code: 'products.picture.label', default: 'Picture')}" />
 
-    </tr>
+            <g:sortableColumn property="price" title="${message(code: 'products.price.label', default: 'Price')}" />
+
+            </tr>
+        </thead>
+        <tbody>
+        <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+
+            <td><g:link action="cart" id="${product.id}">${fieldValue(bean: product, field: "name")}</g:link></td>
+
+            <td>${fieldValue(bean: product, field: "description")}</td>
+
+            <td>${fieldValue(bean: product, field: "picture")}</td>
+
+            <td>${fieldValue(bean: product, field: "price")}</td>
+            <td><a class="btn btn-primary" href="/music_shoppa/products/removeFromCart/${fieldValue(bean: product, field: "id")}"><g:message code="label.remove"/></a>
+
+        </tr>
+        </tbody>
     </table>
 </g:each>
 </body>

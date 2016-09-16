@@ -32,6 +32,17 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${secUserInstance?.products}">
+				<li class="fieldcontain">
+					<span id="products-label" class="property-label"><g:message code="secUser.products.label" default="Products" /></span>
+					
+						<g:each in="${secUserInstance.products}" var="p">
+						<span class="property-value" aria-labelledby="products-label"><g:link controller="products" action="show" id="${p.id}">${p?.encodeAsHTML()}</g:link></span>
+						</g:each>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${secUserInstance?.accountExpired}">
 				<li class="fieldcontain">
 					<span id="accountExpired-label" class="property-label"><g:message code="secUser.accountExpired.label" default="Account Expired" /></span>
@@ -58,24 +69,26 @@
 					
 				</li>
 				</g:if>
-			
+
 				<g:if test="${secUserInstance?.passwordExpired}">
 				<li class="fieldcontain">
 					<span id="passwordExpired-label" class="property-label"><g:message code="secUser.passwordExpired.label" default="Password Expired" /></span>
-					
+
 						<span class="property-value" aria-labelledby="passwordExpired-label"><g:formatBoolean boolean="${secUserInstance?.passwordExpired}" /></span>
-					
+
 				</li>
 				</g:if>
 			
-				<g:if test="${secUserInstance?.products}">
+				<g:if test="${secUserInstance?.roles}">
 				<li class="fieldcontain">
-					<span id="products-label" class="property-label"><g:message code="secUser.products.label" default="Products" /></span>
+					<span id="roles-label" class="property-label"><g:message code="secUser.roles.label" default="Roles" /></span>
 					
-						<g:each in="${secUserInstance.products}" var="p">
-						<span class="property-value" aria-labelledby="products-label"><g:link controller="products" action="show" id="${p.id}">${p?.encodeAsHTML()}</g:link></span>
+						<g:each in="${secUserInstance.roles}" var="r">
+						<span class="property-value" aria-labelledby="roles-label"><g:link controller="secRole" action="show" id="${r.id}">${r?.encodeAsHTML()}</g:link></span>
 						</g:each>
-
+					
+				</li>
+				</g:if>
 			
 			</ol>
 			<g:form url="[resource:secUserInstance, action:'delete']" method="DELETE">
