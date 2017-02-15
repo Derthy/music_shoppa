@@ -45,7 +45,7 @@
 			
 				<g:if test="${secUserInstance?.accountExpired}">
 				<li class="fieldcontain">
-					<span id="accountExpired-label" class="property-label"><g:message code="secUser.accountExpired.label" default="Account Expired" /></span>
+					<span id="accountExpired-label" class="property-label"><g:message code="accountExpired.label" default="Account Expired" /></span>
 					
 						<span class="property-value" aria-labelledby="accountExpired-label"><g:formatBoolean boolean="${secUserInstance?.accountExpired}" /></span>
 					
@@ -54,7 +54,7 @@
 			
 				<g:if test="${secUserInstance?.accountLocked}">
 				<li class="fieldcontain">
-					<span id="accountLocked-label" class="property-label"><g:message code="secUser.accountLocked.label" default="Account Locked" /></span>
+					<span id="accountLocked-label" class="property-label"><g:message code="accountLocked.label" default="Account Locked" /></span>
 					
 						<span class="property-value" aria-labelledby="accountLocked-label"><g:formatBoolean boolean="${secUserInstance?.accountLocked}" /></span>
 					
@@ -63,7 +63,7 @@
 			
 				<g:if test="${secUserInstance?.enabled}">
 				<li class="fieldcontain">
-					<span id="enabled-label" class="property-label"><g:message code="secUser.enabled.label" default="Enabled" /></span>
+					<span id="enabled-label" class="property-label"><g:message code="enabled.label" default="Enabled" /></span>
 					
 						<span class="property-value" aria-labelledby="enabled-label"><g:formatBoolean boolean="${secUserInstance?.enabled}" /></span>
 					
@@ -72,18 +72,18 @@
 
 				<g:if test="${secUserInstance?.passwordExpired}">
 				<li class="fieldcontain">
-					<span id="passwordExpired-label" class="property-label"><g:message code="secUser.passwordExpired.label" default="Password Expired" /></span>
+					<span id="passwordExpired-label" class="property-label"><g:message code="passwordExpired.label" default="Password Expired" /></span>
 
 						<span class="property-value" aria-labelledby="passwordExpired-label"><g:formatBoolean boolean="${secUserInstance?.passwordExpired}" /></span>
 
 				</li>
 				</g:if>
 			
-				<g:if test="${secUserInstance?.roles}">
+				<g:if test="${secUserInstance?.sec_role}">
 				<li class="fieldcontain">
-					<span id="roles-label" class="property-label"><g:message code="secUser.roles.label" default="Roles" /></span>
+					<span id="roles-label" class="property-label"><g:message code="roles.label" default="Roles" /></span>
 					
-						<g:each in="${secUserInstance.roles}" var="r">
+						<g:each in="${secUserInstance.sec_role}" var="r">
 						<span class="property-value" aria-labelledby="roles-label"><g:link controller="secRole" action="show" id="${r.id}">${r?.encodeAsHTML()}</g:link></span>
 						</g:each>
 					

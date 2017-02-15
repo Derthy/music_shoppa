@@ -22,7 +22,7 @@ class SecUser implements Serializable {
 	boolean accountLocked
 	boolean passwordExpired
 	
-	static hasMany = [products: Products,roles:SecRole]
+	static hasMany = [products: Products,sec_role:SecRole]
 
 	//static mappedBy = [buyers: Products]
 

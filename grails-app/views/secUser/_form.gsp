@@ -70,7 +70,7 @@
 		<g:message code="secUser.roles.label" default="Roles" />
 		
 	</label>
-	<g:select name="roles" from="${org.example.SecRole.list()}" multiple="multiple" optionKey="id" size="5" value="${secUserInstance?.roles*.id}" class="many-to-many"/>
+	<g:select name="roles" from="${org.example.SecRole.list()}" multiple="multiple" optionKey="id" size="5" value="${secUserInstance?.sec_role*.id}" class="many-to-many"/>
 
 </div>
 
