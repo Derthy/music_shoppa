@@ -11,7 +11,6 @@
 		<a href="#list-secUser" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div class="nav" role="navigation">
 			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
 				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
 			</ul>
 		</div>
@@ -24,15 +23,15 @@
 			<thead>
 					<tr>
 					
-						<g:sortableColumn property="username" title="${message(code: 'label.login', default: 'Username')}" />
+						<g:sortableColumn property="username" title="${message(code: 'secUser.username.label', default: 'Username')}" />
 					
-						<g:sortableColumn property="accountExpired" title="${message(code: 'accountExpired.label', default: 'Account Expired')}" />
+						<g:sortableColumn property="accountExpired" title="${message(code: 'secUser.accountExpired.label', default: 'Account Expired')}" />
 					
-						<g:sortableColumn property="accountLocked" title="${message(code: 'accountLocked.label', default: 'Account Locked')}" />
+						<g:sortableColumn property="accountLocked" title="${message(code: 'secUser.accountLocked.label', default: 'Account Locked')}" />
 					
-						<g:sortableColumn property="enabled" title="${message(code: 'enabled.label', default: 'Enabled')}" />
+						<g:sortableColumn property="enabled" title="${message(code: 'secUser.enabled.label', default: 'Enabled')}" />
 					
-						<g:sortableColumn property="passwordExpired" title="${message(code: 'passwordExpired.label', default: 'Password Expired')}" />
+						<g:sortableColumn property="passwordExpired" title="${message(code: 'secUser.passwordExpired.label', default: 'Password Expired')}" />
 					
 					</tr>
 				</thead>
@@ -54,7 +53,6 @@
 				</g:each>
 				</tbody>
 			</table>
-
 		</div>
 	</body>
 </html>

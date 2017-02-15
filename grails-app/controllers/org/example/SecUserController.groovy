@@ -8,8 +8,8 @@ import grails.transaction.Transactional
 @Transactional(readOnly = true)
 class SecUserController {
 
-    SecUserService secUserService
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    SecUserService secUserService
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
@@ -81,6 +81,7 @@ class SecUserController {
             notFound()
             return
         }
+
         secUserService.removeUserRelation(secUserInstance)
         secUserService.removeUserRoleRelation(secUserInstance)
         secUserInstance.delete flush:true

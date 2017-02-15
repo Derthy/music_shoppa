@@ -11,7 +11,6 @@
 		<a href="#show-secUser" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div class="nav" role="navigation">
 			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
 				<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
 				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
 			</ul>
@@ -45,7 +44,7 @@
 			
 				<g:if test="${secUserInstance?.accountExpired}">
 				<li class="fieldcontain">
-					<span id="accountExpired-label" class="property-label"><g:message code="accountExpired.label" default="Account Expired" /></span>
+					<span id="accountExpired-label" class="property-label"><g:message code="secUser.accountExpired.label" default="Account Expired" /></span>
 					
 						<span class="property-value" aria-labelledby="accountExpired-label"><g:formatBoolean boolean="${secUserInstance?.accountExpired}" /></span>
 					
@@ -54,7 +53,7 @@
 			
 				<g:if test="${secUserInstance?.accountLocked}">
 				<li class="fieldcontain">
-					<span id="accountLocked-label" class="property-label"><g:message code="accountLocked.label" default="Account Locked" /></span>
+					<span id="accountLocked-label" class="property-label"><g:message code="secUser.accountLocked.label" default="Account Locked" /></span>
 					
 						<span class="property-value" aria-labelledby="accountLocked-label"><g:formatBoolean boolean="${secUserInstance?.accountLocked}" /></span>
 					
@@ -63,28 +62,19 @@
 			
 				<g:if test="${secUserInstance?.enabled}">
 				<li class="fieldcontain">
-					<span id="enabled-label" class="property-label"><g:message code="enabled.label" default="Enabled" /></span>
+					<span id="enabled-label" class="property-label"><g:message code="secUser.enabled.label" default="Enabled" /></span>
 					
 						<span class="property-value" aria-labelledby="enabled-label"><g:formatBoolean boolean="${secUserInstance?.enabled}" /></span>
 					
 				</li>
 				</g:if>
-
-				<g:if test="${secUserInstance?.passwordExpired}">
-				<li class="fieldcontain">
-					<span id="passwordExpired-label" class="property-label"><g:message code="passwordExpired.label" default="Password Expired" /></span>
-
-						<span class="property-value" aria-labelledby="passwordExpired-label"><g:formatBoolean boolean="${secUserInstance?.passwordExpired}" /></span>
-
-				</li>
-				</g:if>
 			
 				<g:if test="${secUserInstance?.sec_role}">
 				<li class="fieldcontain">
-					<span id="roles-label" class="property-label"><g:message code="roles.label" default="Roles" /></span>
+					<span id="sec_role-label" class="property-label"><g:message code="secUser.sec_role.label" default="Secrole" /></span>
 					
-						<g:each in="${secUserInstance.sec_role}" var="r">
-						<span class="property-value" aria-labelledby="roles-label"><g:link controller="secRole" action="show" id="${r.id}">${r?.encodeAsHTML()}</g:link></span>
+						<g:each in="${secUserInstance.sec_role}" var="s">
+						<span class="property-value" aria-labelledby="sec_role-label"><g:link controller="secRole" action="show" id="${s.id}">${s?.encodeAsHTML()}</g:link></span>
 						</g:each>
 					
 				</li>

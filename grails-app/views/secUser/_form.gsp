@@ -65,12 +65,12 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: secUserInstance, field: 'roles', 'error')} ">
-	<label for="roles">
-		<g:message code="secUser.roles.label" default="Roles" />
+<div class="fieldcontain ${hasErrors(bean: secUserInstance, field: 'sec_role', 'error')} ">
+	<label for="sec_role">
+		<g:message code="secUser.sec_role.label" default="Secrole" />
 		
 	</label>
-	<g:select name="roles" from="${org.example.SecRole.list()}" multiple="multiple" optionKey="id" size="5" value="${secUserInstance?.sec_role*.id}" class="many-to-many"/>
+	<g:select name="sec_role" from="${org.example.SecRole.list()}" multiple="multiple" optionKey="id" size="5" value="${secUserInstance?.sec_role*.id}" class="many-to-many"/>
 
 </div>
 
